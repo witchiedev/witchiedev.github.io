@@ -241,16 +241,16 @@ class Snake {
   }
   controlls() {
     let dir = this.size;
-    if (KEY.ArrowUp) {
+    if (KEY.ArrowUp || KEY.w) {
       this.dir = new helpers.Vec(0, -dir);
     }
-    if (KEY.ArrowDown) {
+    if (KEY.ArrowDown || KEY.ws) {
       this.dir = new helpers.Vec(0, dir);
     }
-    if (KEY.ArrowLeft) {
+    if (KEY.ArrowLeft || KEY.a) {
       this.dir = new helpers.Vec(-dir, 0);
     }
-    if (KEY.ArrowRight) {
+    if (KEY.ArrowRight || KEY.d) {
       this.dir = new helpers.Vec(dir, 0);
     }
   }
