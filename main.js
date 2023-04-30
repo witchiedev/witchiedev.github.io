@@ -148,10 +148,10 @@ let KEY = {
     addEventListener(
       "keydown",
       (e) => {
-        if ((e.key === "ArrowUp" || e.key === "w" ) && this.ArrowDown) return;
-        if ((e.key === "ArrowDown" || e.key === "s" ) && this.ArrowUp) return;
-        if ((e.key === "ArrowLeft" || e.key === "a" ) && this.ArrowRight) return;
-        if ((e.key === "ArrowRight" || e.key === "d" ) && this.ArrowLeft) return;
+        if ((e.key === "ArrowUp" || e.key == "w" ) && this.ArrowDown) return;
+        if ((e.key === "ArrowDown" || e.key == "s" ) && this.ArrowUp) return;
+        if ((e.key === "ArrowLeft" || e.key == "a" ) && this.ArrowRight) return;
+        if ((e.key === "ArrowRight" || e.key == "d" ) && this.ArrowLeft) return;
         this[e.key] = true;
         Object.keys(this)
           .filter((f) => f !== e.key && f !== "listen" && f !== "resetState")
