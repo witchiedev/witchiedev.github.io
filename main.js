@@ -148,7 +148,6 @@ let KEY = {
     addEventListener(
       "keydown",
       (e) => {
-        if (e.key == "w"  && this.ArrowDown) return;
         if ((e.key === "ArrowDown" || e.key == "s" ) && this.ArrowUp) return;
         if ((e.key === "ArrowLeft" || e.key == "a" ) && this.ArrowRight) return;
         if ((e.key === "ArrowRight" || e.key == "d" ) && this.ArrowLeft) return;
