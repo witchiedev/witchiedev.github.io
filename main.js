@@ -244,7 +244,7 @@ class Snake {
     if (KEY.ArrowUp || KEY.w) {
       this.dir = new helpers.Vec(0, -dir);
     }
-    if (KEY.ArrowDown || KEY.ws) {
+    if (KEY.ArrowDown || KEY.s) {
       this.dir = new helpers.Vec(0, dir);
     }
     if (KEY.ArrowLeft || KEY.a) {
