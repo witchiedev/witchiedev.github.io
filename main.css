@@ -1,0 +1,154 @@
+:root {
+  --primary-color: #6e7888;
+  --secondary-color: #222738;
+  --third-color: #181825;
+  --primary-hover: #a6aab5;
+  --secondary-hover: #4cffd7;
+}
+
+@font-face {
+  font-family: "game";
+  src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button:focus {
+  outline: 0;
+}
+
+html {
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  color: var(--primary-color);
+}
+
+body {
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  background-color: var(--third-color);
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#ui {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  flex-flow: column;
+  margin-left: 10px;
+}
+
+h2 {
+  font-weight: 200;
+}
+
+#score {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.noselect {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+#replay, .theme {
+  display: inline-block;
+  font-size: 10px;
+  padding-right: 10px;
+  background: var(--primary-color);
+  border: none;
+  color: var(--secondary-color);
+  border-radius: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.soundtracks {
+  display: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: none;
+  background-color: transparent;
+  color: transparent;
+}
+
+#author {
+  width: 100%;
+  bottom: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: inherit;
+  text-transform: uppercase;
+}
+#author span {
+  font-size: 10px;
+  margin-left: 25px;
+  color: inherit;
+  letter-spacing: 4px;
+}
+#author h1 {
+  font-size: 25px;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  display: block;
+  font-size: 10px;
+  padding: 10px 20px;
+  background: var(--primary-color);
+  border: none;
+  color: var(--secondary-color);
+  border-radius: 20px;
+  font-weight: 800;
+}
+
+@media (max-width: 600px) {
+  #replay {
+    margin-bottom: 20px;
+    transform: rotate(0deg);
+  }
+  h2 {
+    transform: rotate(0deg);
+  }
+  #ui {
+    flex-flow: row wrap;
+    margin-bottom: 20px;
+  }
+  #score {
+    margin-top: 0;
+    margin-left: 20px;
+  }
+  .container {
+    flex-flow: column wrap;
+  }
+}/*# sourceMappingURL=main.css.map */
