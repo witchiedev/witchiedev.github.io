@@ -1,0 +1,192 @@
+:root{
+  --menu-bg: rgb(20, 20, 30);
+  --menu-shadow: rgb(20, 20, 30);
+  --button-bg: transparent;
+  --button-stroke: rgb(240, 240, 240);
+  --text-color: rgb(240, 240, 240);
+  --version-color: rgb(66, 47, 75);
+}
+
+body * {
+  color: var(--text-color);
+  font-family: "Fira Code", monospace;
+  font-weight: 700;
+}
+
+button{
+  background-color: var(--button-bg);
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+html, body{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+main{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+section{
+  height: 100vh;
+}
+section:not(.game){
+  background-color: var(--menu-bg);
+}
+.game{
+  width: 70vw;
+  z-index: 1;
+}
+.settings-icon,
+.settings-toggle{
+  width: 3vw;
+  height: 3vw;
+  position: fixed;
+  margin: 1.5vw 0 0 1.5vw;
+}
+.settings-toggle{
+  z-index: 4;
+  opacity: 0;
+  cursor: pointer;
+}
+.settings-toggle[type="checkbox"]:checked ~ .settings{
+  transform: translateX(0);
+}
+.settings-icon{
+  z-index: 3;
+}
+.settings{
+  transform: translateX(-6vw);
+  position: fixed;
+  width: 6vw;
+  box-shadow: 5px 0px 20px 0px var(--menu-shadow); 
+  z-index: 2;
+  transition: transform 0.2s ease-in-out;
+}
+.stats{
+  width: 30vw;
+}
+.upgrades{
+  width: 31vw;
+  box-shadow: -5px 0px 20px 0px var(--menu-shadow);
+  z-index: 2;
+}
+section.settings{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+section.settings > * {
+  margin-bottom: 3vw;
+}
+
+.change-theme,
+.stop{
+  width: 4.5vw;
+  height: 4.5vw;
+  border-radius: 100px;
+  border: 3px solid var(--button-stroke);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.change-theme:hover,
+.stop:hover{
+  transform: rotate(-10deg) scale(1.1);
+}
+.change-theme:active,
+.stop:active{
+  transform: scale(1);
+}
+.theme{
+  width: 3vw;
+  height: 3vw;
+}
+
+.stop img{
+  width: 2.5vw;
+  height: 2.5vw;
+}
+
+.tabs,
+.view{
+  width: 100%;
+}
+.tabs{
+  height: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.tab{
+  border: 2px solid var(--button-stroke);
+  width: 30%;
+  cursor: pointer;
+}
+.view{
+  height: 95%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  place-items: center;
+}
+.view div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  height: 100px;
+}
+.view div p{
+  margin: 0;
+  text-align: center;
+}
+.view div button{
+  border: 2px solid var(--button-stroke);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+.view div button img {
+  width: 16px;
+}
+.blur{
+  display: none;
+  position: absolute;
+  width: 0;
+  height: 80vh;
+  top: calc(50% - (80vh / 2));
+  left: calc((76vw / 2 ) - (60vw / 2));
+  z-index: 5;
+}
+.blur::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  background-color: var(--menu-bg);
+  filter: blur(30px);
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+}
+.cash{
+  position: absolute;
+  top: 2vw;
+  left: calc(6vw + 3vw);
+}

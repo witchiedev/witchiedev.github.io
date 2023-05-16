@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./styles.css" type="text/css">
+  <script src="./main.js" defer></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roman Numerals | Made By Witchie</title>
+</head>
+<body spellcheck="false">
+  <div class="textarea-wrapper">
+    <textarea placeholder="Base 10 number" id="base-10" oninput="document.getElementById('numerals').value = convertToRoman(this.value);" step="1" min="1" max="3999"></textarea>
+    <textarea placeholder="Roman numeral" type="text" id="numerals" oninput="document.getElementById('base-10').value = convertToBase10 (this.value);"></textarea>
+  </div>
+  <div class="slider-wrapper">
+    <button class="swap" onclick="swap(document.getElementById('base-10'), document.getElementById('numerals'))"><img src="repeat-256.png" alt="swap"></button>
+    <button class="copy" onclick="copy(document.getElementById('numerals').value + ' = ' + document.getElementById('base-10').value)">Copy</button>
+  </div>
+</body>
+</html>

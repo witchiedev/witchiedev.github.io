@@ -1,33 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./styles.css" type="text/css" />
     <script src="./main.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="a portfolio" />
   </head>
   <body>
-    <div class="soundtracks"></div>
-    <div class="container noselect">
-      <div class="wrapper">
-        <button id="replay">
-          RESTART
-        </button>
-        <button class="theme">
-          CHANGE THEME
-        </button>
-        <div id="canvas">
-
+    <main>
+      <header>
+        <div class="header__icon--wrapper">
+          <img src="./logos/witchiedev.png" alt="header logo" />
         </div>
-        <div id="ui">
-          <h2>SCORE
-          </h2>
-          <span id="score">00</span>
+      </header>
+      <section id="welcome">
+        <img src="./certifications/javascript-data-structures.PNG" class="cert-img-1 cert-img">
+        <img src="./certifications/responsive-web-design.png" class="cert-img-2 cert-img">
+        <div class="welcome__desc">
+          Hello visitor! I'm a JavaScript Developer who is interested into tech related
+          subjects. I'm passionate about solving real world problems with what I
+          learn everyday and I want to share it to all people around the world.
+          I make simple to complex projects every week and place them here.
+          <span class="justifier"></span>
         </div>
-      </div>
-      <div id="author">
-        <h1>SNAKE GAME</h1> <span>MADE BY WITCHIEDEV_</span>
-      </div>
-    </div>
+      </section>
+      <section id="projects">
+        <div class="project__tabs">
+          <button onclick="view(this, 1)" style="background-color: var(--color-primary); border-bottom: none; height: 56px;" class="project__tab tab-apps">Apps</button>
+          <button onclick="view(this, 2)" class="project__tab tab-games">Games</button>
+          <button onclick="view(this, 3)" class="project__tab tab-templates">Templates</button>
+        </div>
+        <div class="project__views">
+          <div id="project__view">
+            <a class="app-a" href="./projects/calculator/index.html" target="_blank"><div class="app">
+                <img class="app-img" src="./icons/calculator.PNG" alt="app" />
+                <p>Calculator</p>
+              </div></a>
+              <a class="app-a" href="./projects/weather/index.html" target="_blank"><div class="app">
+                <img class="app-img" src="./icons/weather.PNG" alt="app" />
+                <p>Weather</p>
+              </div></a>
+              <a class="app-a" href="./projects/cipher/index.html" target="_blank"><div class="app">
+                <img class="app-img" src="./icons/cipher.PNG" alt="app" />
+                <p>Caesars Cipher</p>
+              </div></a>
+              <a class="app-a" href="./projects/roman/index.html" target="_blank"><div class="app">
+                <img class="app-img" src="./icons/roman.PNG" alt="app" />
+                <p>Roman Numerals</p>
+              </div></a>
+              <a class="app-a" href="./projects/draw-w/index.html" target="_blank"><div class="app">
+                <img class="app-img" src="./icons/draw-w.png" alt="app" />
+                <p>Draw-W</p>
+              </div></a>
+          </div>
+          <div style="display: none; width: 0px; height: 0px;" class="view view-1 app__view">
+            <a class="app-a" href="./projects/calculator/index.html" target="_blank">
+              <div class="app">
+                <img class="app-img" src="./icons/calculator.PNG" alt="app" />
+                <p>Calculator</p>
+              </div></a>
+            <a class="app-a" href="./projects/weather/index.html" target="_blank"><div class="app">
+              <img class="app-img" src="./icons/weather.PNG" alt="app" />
+              <p>Weather</p>
+            </div></a>
+            <a class="app-a" href="./projects/cipher/index.html" target="_blank"><div class="app">
+              <img class="app-img" src="./icons/cipher.PNG" alt="app" />
+              <p>Caesars Cipher</p>
+            </div></a>
+            <a class="app-a" href="./projects/roman/index.html" target="_blank"><div class="app">
+              <img class="app-img" src="./icons/roman.PNG" alt="app" />
+              <p>Roman Numerals</p>
+            </div></a>
+            <a class="app-a" href="./projects/draw-w/index.html" target="_blank"><div class="app">
+              <img class="app-img" src="./icons/draw-w.png" alt="app" />
+              <p>Draw-W</p>
+            </div></a>
+          </div>
+          <div style="display: none; width: 0px; height: 0px;" class="view view-2 game__view">
+            <a class="app-a" href="./projects/tic-tac-toe/index.html" target="_blank"><div class="app">
+              <img class="app-img" src="./icons/tic-tac-toe.PNG" alt="app" />
+              <p>Tic Tac Toe</p>
+            </div></a>
+            <a class="app-a" href="./projects/snake/index.html" target="_blank"><div class="app">
+              <img class="app-img" src="./icons/snake.PNG" alt="app" />
+              <p>Snake</p>
+            </div></a>
+            <a class="app-a" href="./projects/snake-2/index.html" target="_blank"><div class="app">
+              <img class="app-img" src="./icons/snake-2.png" alt="app" />
+              <p>Snake 2</p>
+            </div></a>
+            <a class="app-a" href="./projects/tower-defense/index.html" target="_blank"><div class="app">
+              <img class="app-img" src="./icons/tower-defense.png" alt="app" />
+              <p>Witchies TD</p>
+            </div></a>
+          </div>
+          <div style="display: none; width: 0px; height: 0px;" class="view view-3 template__view">
+            <a class="app-a" href="./projects/trombones/index.html" target="_blank"><div class="app">
+              <img class="app-img" src="./icons/trombones.PNG" alt="app" />
+              <p>Original Trombones</p>
+            </div></a>
+            <a class="app-a" href="./projects/jsdoc/index.html" target="_blank"><div class="app">
+              <img class="app-img" src="./icons/jsdoc.PNG" alt="app" />
+              <p>JSDoc</p>
+            </div></a>
+            <a class="app-a" href="./projects/nilamlak/index.html" target="_blank"><div class="app">
+              <img class="app-img" src="./icons/nilamlak.png" alt="app" />
+              <p>Nilamlak</p>
+            </div></a>
+          </div>
+        </div>
+      </section>
+      <footer id="links">
+        <div class="link">
+          <a href="https://www.freecodecamp.org/WitchieDev" target="_blank"><img src="./logos/freecodecamp.svg" alt="freecodecamp" class="link__img" /></a>
+        </div>
+        <div class="link">
+          <a href="https://www.linkedin.com/in/mohammad-matin-mirzaee-nilash-31b50026b/" target="_blank"><img src="./logos/linkedin.png" alt="linkedin" class="link__img" /></a>
+        </div>
+        <div class="link">
+          <a href="https://github.com/Witchiedev" target="_blank"><img src="./logos/github.png" alt="github" class="link__img" /></a>
+        </div>
+      </footer>
+    </main>
   </body>
 </html>
-
-

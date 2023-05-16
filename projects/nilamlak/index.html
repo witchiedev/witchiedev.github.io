@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa-IR">
+<head>
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="shortcut icon" type="image/jpg" href="./assets/logos/favicon.ico"/>
+  <script src="./scripts/main.js" defer></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نیل املاک | ثبت آگهی و خرید املاک</title>
+</head>
+<body>
+  <main>
+    <header class="header-box">
+      <div class="header">
+        <div class="header-right">
+          <div class="header-right-logo">
+            <img class="header-right-logo-image" src="./assets/logos/logo.png">
+          </div>
+          <hr class="divider vertical-divider">
+          <div class="header-right-search">
+            <div class="header-right-search-icon">
+              <img src="./assets/images/search.png">
+            </div>
+            <input class="header-right-search-input" type="text" placeholder="جستجو">
+          </div>
+        </div>
+        <nav class="header-nav">
+          <ul class="header-nav-list">
+            <li class="header-nav-list-item"><img src="./assets/images/add-user.png">ثبت نام</li>
+            <li class="header-nav-list-item"><img src="./assets/images/user.png">ورود</li>
+            <li class="header-nav-list-item"><img src="./assets/images/add.png">ثبت آگهی</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="content">
+      <section class="filter">
+        <div class="filter-checkbox">
+          <span>فیلتر جستجو</span>
+          <div class="filter-checkbox-arrow">
+            <input class="checkbox" type="checkbox" autocomplete="off">
+            <img src="./assets/images/arrow-216-512.png">
+          </div>
+        </div>
+        <hr>
+        <div class="popup">
+        </div>
+        <ul class="filter-content">
+          <li class="filter-content-region">
+            <button class="filter-content-region-province">گیلان</button>
+            <button class="filter-content-region-city">شهر</button>
+          </li>
+          <li class="filter-content-price">
+            <input placeholder="از‌ (تومان)" type="text" class="filter-content-price-min input-number">
+            <input placeholder="تا (تومان)" type="text" class="filter-content-price-max input-number">
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

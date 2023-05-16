@@ -1,0 +1,223 @@
+:root{
+  --projects-counter: 8;
+  --color-primary: #ff9361;
+  --color-secondary: #ff7e42;
+  --color-projects: #ff7231;
+  --color-bg: whitesmoke;
+}
+
+html{
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+body{
+  margin: 0;
+  font-size: 1rem;
+}
+header{
+  background-color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  box-shadow: 0 0 10px 0 var(--color-primary);
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+}
+header >*{
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.nav__btn{
+  text-decoration: none;
+  color: black;
+}
+p,
+a,
+button,
+div,
+span,
+input{
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.cert-img {
+  opacity: 0.5;
+  position: absolute;
+  width: 320px;
+  object-fit: contain;
+
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease-in-out 0ms, opacity 0.2s ease-in-out 0ms;
+}
+.cert-img-1:hover {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1) rotate(-5deg);
+}
+.cert-img-2:hover {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+}
+.cert-img-1 {
+  top: calc(17% + 5rem);
+  left: 50%;
+}
+.cert-img-2 {
+  top: 83%;
+  left: 50%;
+}
+section#welcome{
+  padding-top: 5rem;
+  background-color: var(--color-bg);
+  height: calc(100vh - 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+section#welcome > .welcome__desc{
+  animation: slide 1.2s normal ease-in-out;
+}
+@keyframes slide{
+  0%{
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.welcome__desc{
+  width: 90%;
+  max-width: calc(248px * 2);
+  text-align: justify;
+  text-justify: inter-character;
+}
+.justifier{
+  width: 100%;
+}
+.project__tabs{
+  background-color: var(--color-projects);
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  border-bottom: 2px solid black;
+}
+.project__tab{
+  transform: translateY(2px);
+  background-color: var(--color-secondary);
+  border: 2px solid black;
+  border-radius: 10px 10px 0 0;
+  width: calc( 95% / 3 );
+  height: 60px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: height 0.1s;
+}
+.header__icon--wrapper{
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__icon--wrapper img{
+  width: 320px;
+}
+#project__view{
+  background-color: var(--color-primary);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  height: fit-content;
+  transition: height 0.2s;
+}
+.app{
+  padding: 20px;
+  width: 80px;
+  height: 160px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.app-a{
+  text-decoration: none;
+  color: black;
+}
+.app-img{
+  object-fit: cover;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px var(--color-secondary);
+}
+.app p {
+  text-align: center;
+}
+.app:hover,
+.link:hover{
+  transform: scale(1.05, 1.05);
+}
+footer{
+  height: 200px;
+  background-color: var(--color-bg);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.link__img,
+.link a{
+  width: 48px;
+  height: 48px;
+}
+.link{
+  margin: 0 10px;
+  width: 80px;
+  height: 80px;
+  border: 3px solid var(--color-primary);
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+  .cert-img {
+    width: 250px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .cert-img {
+    width: 190px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .welcome__desc {
+    font-size: 12px;
+  }
+  .cert-img {
+    width: 135px;
+  }
+}
+@media only screen and (min-width: 768px){ 
+  #project__view{
+    justify-content: flex-start;
+  }
+  .project__tab{
+    width: 240px;
+    margin: 0 6px;
+  }
+  .project__tabs{
+    justify-content: flex-start;
+  }
+}

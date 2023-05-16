@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./styles.css" type="text/css" />
+  <script src="./main.js" defer></script>
+  <script src="./charts.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App | Made By Witchie, Powered By Visual Crossing</title>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="header__logo--wrapper">
+        <img class="header__logo" src="./weather-logo.png" alt="Weather Witchie Logo" />
+      </div>
+      <div class="header__search--wrapper">
+        <input type="text" id="search" placeholder="Search city..." />
+        <button class="search--btn" onclick="extract(document.getElementById('search').value, 0, 'metric')">
+          <svg id="Layer_1" style="height: 1.6rem; width: 1.6rem;" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 122.88">
+            <path d="M61.44,0A61.46,61.46,0,1,1,18,18,61.21,61.21,0,0,1,61.44,0ZM77,57.42l-7.23,4.11a7.56,7.56,0,0,1-.25,1.57,8,8,0,0,1-9.75,5.63,8.19,8.19,0,0,1-1.58-.61l-7.66,4.36L81.43,95.23,77,57.42ZM46.55,65.88l7.37-4.19A7.86,7.86,0,0,1,54.16,59a8,8,0,0,1,9.75-5.63,8.28,8.28,0,0,1,2.55,1.2L73,50.82,42.14,28.07l4.41,37.81ZM95.36,27.52a48,48,0,1,0,14,33.92,47.82,47.82,0,0,0-14-33.92Z"/>
+          </svg>
+        </button>
+      </div>
+      <nav>
+        <button onclick="extract(document.getElementById('search').value, 0, 'metric')">Metric</button>
+        <button onclick="extract(document.getElementById('search').value, 0, 'us')">Imperial</button>
+        <button onclick="extract(document.getElementById('search').value, 0, 'base')">Scientific</button>
+      </nav>
+    </header>
+    <section id="main-window">
+      <div class="current">
+        <div class="current__info">
+          <div class="current__icon--wrapper">
+            <img class="current__icon" src="./unknown.png" alt="sun logo" />
+          </div>
+          <div class="current__temp--stats">
+            <div class="current__temp">? °C</span></div>
+            <p class="current__temp--description">No information received.</p>
+          </div>
+        </div>
+        <div class="weather__extra">
+          <img class="icon extra__icon" src="./drop.png"><div class="humidity extra__info">?% Humid</div>
+          <img class="icon extra__icon" src="./cloud.png"><div class="cloud-coverage extra__info">?% Cloud Coverage</div>
+          <img class="icon extra__icon" src="./wind.png"><div class="wind-speed extra__info">? km/h</span></div>
+          <img class="icon extra__icon" src="./uv.png"><div class="uv-index extra__info">? UV-Index</div>
+        </div>
+        <div class="hourchart"><canvas id="myChart"></canvas></div>
+      </div>
+      <div class="v-nav">
+        <div class="v-nav__wrapper">
+          <div onclick="extract(document.getElementById('search').value, 0, 'none')" class="v-nav__item item-1">
+            <img src="./unknown.png" class="v-nav__icon icon-1" alt="status">
+            <div class="v-nav__stat stat-1">
+              <p class="v-nav__stat__day today">Today</p>
+              <div class="v-nav__temp v-nav__temp--1">? °C
+              </div>
+            </div>
+          </div>
+          <div onclick="extract(document.getElementById('search').value, 1, 'none')" class="v-nav__item item-2">
+            <img src="./unknown.png" class="v-nav__icon icon-2" alt="status">
+            <div class="v-nav__stat stat-2">
+              <p class="v-nav__stat__day">Day 2</p>
+              <div class="v-nav__temp v-nav__temp--2">? °C
+              </div>
+            </div>
+          </div>
+          <div onclick="extract(document.getElementById('search').value, 2, 'none')" class="v-nav__item item-3">
+            <img src="./unknown.png" class="v-nav__icon icon-3" alt="status">
+            <div class="v-nav__stat stat-3">
+              <p class="v-nav__stat__day">Day 3</p>
+              <div class="v-nav__temp v-nav__temp--3">? °C
+              </div>
+            </div>
+          </div>
+          <div onclick="extract(document.getElementById('search').value, 3, 'none')" class="v-nav__item item-4">
+            <img src="./unknown.png" class="v-nav__icon icon-4" alt="status">
+            <div class="v-nav__stat stat-4">
+              <p class="v-nav__stat__day">Day 4</p>
+              <div class="v-nav__temp v-nav__temp--4">? °C
+              </div>
+            </div>
+          </div>
+          <div onclick="extract(document.getElementById('search').value, 4, 'none')" class="v-nav__item item-5">
+            <img src="./unknown.png" class="v-nav__icon icon-5" alt="status">
+            <div class="v-nav__stat stat-5">
+              <p class="v-nav__stat__day">Day 5</p>
+              <div class="v-nav__temp v-nav__temp--5">? °C
+              </div>
+            </div>
+          </div>
+          <div onclick="extract(document.getElementById('search').value, 5, 'none')" class="v-nav__item item-6">
+            <img src="./unknown.png" class="v-nav__icon icon-6" alt="status">
+            <div class="v-nav__stat stat-6">
+              <p class="v-nav__stat__day">Day 6</p>
+              <div class="v-nav__temp v-nav__temp--6">? °C
+              </div>
+            </div>
+          </div>
+          <div onclick="extract(document.getElementById('search').value, 6, 'none')" class="v-nav__item item-7">
+            <img src="./unknown.png" class="v-nav__icon icon-7" alt="status">
+            <div class="v-nav__stat stat-7">
+              <p class="v-nav__stat__day">Day 7</p>
+              <div class="v-nav__temp v-nav__temp--7">? °C
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

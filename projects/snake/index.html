@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+<title>Snake Game | Made By Witchie</title>
+<style>
+    *{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    html {
+        text-align: center;
+    }
+    body{
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+    }
+    body > *{
+        padding: 10px;
+    }
+    #board {
+        width: calc(32 * 25px);
+    }
+
+    #board div {
+        background-color: rgb(153, 153, 153);
+        border: 1px solid black;
+        box-sizing: border-box;
+        float: left;
+        width: 25px;
+        height: 25px;
+    }
+
+    #board .snake {
+        background-color: green;
+    }
+
+    #board .apple {
+        background-color: red;
+    }
+    #difficulties{
+        display: flex;
+        flex-direction: column;
+    }
+    #difficulties button {
+        margin: 5px 5px;
+        padding: 10px 20px;
+        width: 100%;
+        background-color: lightgreen;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        transition: color 0.3s, background-color 0.3s;
+        cursor: pointer;
+    }
+    #difficulties button:hover{
+        box-sizing: border-box;
+        background-color: white;
+        color: lightgreen;
+        border: 3px solid lightgreen;
+        padding: 7px 17px;
+    }
+    #mobile-controller *{
+        display: none;
+    }
+    .control{
+        transform-origin: 50% 50%;
+        background: none;
+        color: black;
+        transition: background-color 0.1s;
+    }
+    .control:hover{
+        background-color: rgb(240, 240, 240);
+    }
+    .control__top,
+    .control__right,
+    .control__left{
+        border-top: none;
+        border-left: 3px solid black;
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+    }
+    .control__top{
+        transform: rotate(180deg) translateY(-1px);
+        border-radius: 0 0 92px 92px;
+    }
+    .control__right{
+        transform: rotate(-90deg) translateY(-1px);
+        border-radius: 0 0 92px 92px;
+    }
+    .control__left{
+        transform: rotate(90deg) translateY(-1px);
+        border-radius: 0 0 92px 92px;
+    }
+    .control__bottom{
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 3px solid black;
+        transform: rotate(0deg);
+    }
+    body a,
+    body p{
+        position: absolute;
+        text-decoration: none;
+        margin: 0;
+        padding: 0;
+        left: 5%;
+    }
+    body a{
+        top: 92%;
+    }
+    body p{
+        top: 95%;
+    }
+    @media only screen and (max-width: 1000px){
+        #mobile-controller {
+            display: grid;
+            grid-template-rows: 125px 125px;
+            grid-template-columns: 125px 125px 125px;
+        }
+        #mobile-controller *{
+            display: inline-block;
+        }
+        body{
+            flex-direction: column;
+        }
+        #difficulties{
+            flex-direction: row;
+        }
+        #board div {
+            width: 20px;
+            height: 20px;
+        }
+        #board {
+            width: calc(32 * 20px);
+        }
+    }
+    @media only screen and (max-width: 670px){
+        #board div {
+            width: 15px;
+            height: 15px;
+        }
+        #board {
+            width: calc(32 * 15px);
+        }
+    }
+    @media only screen and (max-width: 500px){
+        #board div {
+            width: 12px;
+            height: 12px;
+        }
+        #board {
+            width: calc(32 * 12px);
+        }
+    }
+    @media only screen and (max-width: 415px){
+        
+        #difficulties button {
+            font-size: 0.7rem;
+        }
+        #board div {
+            width: 10px;
+            height: 10px;
+        }
+        #board {
+            width: calc(32 * 10px);
+        }
+        #mobile-controller {
+            grid-template-rows: 100px 100px 100px;
+            grid-template-columns: 100px 100px 100px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div id="board"></div>
+    <div id="difficulties">
+        <button id="easy">Easy</button>
+        <button id="normal">Normal</button>
+        <button id="hard">Hard</button>
+        <button id="impossible">Impossible</button>
+        <audio src="bg-music-8bit.mp3" autoplay loop></audio>
+    </div>
+    <a href="./changelog.md">changelog</a>
+    <p>v1.0.2 release</p>
+    <div id="mobile-controller">
+        <div class="empty-ruleset"></div>
+        <button class="control control__top" onclick="navigate('top')">
+            <svg opacity="1" aria-hidden="true" height="48" viewBox="0 0 16 16" version="1.1" width="48" data-view-component="true" class="octicon octicon-chevron-down HeaderMenu-icon ml-1">
+                <path fill-rule="evenodd" d="M12.78 6.22a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06 0L3.22 7.28a.75.75 0 011.06-1.06L8 9.94l3.72-3.72a.75.75 0 011.06 0z"></path>
+            </svg>
+        </button>
+        <div class="empty-ruleset"></div>
+        <button class="control control__left" onclick="navigate('left')">
+            <svg opacity="1" aria-hidden="true" height="48" viewBox="0 0 16 16" version="1.1" width="48" data-view-component="true" class="octicon octicon-chevron-down HeaderMenu-icon ml-1">
+                <path fill-rule="evenodd" d="M12.78 6.22a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06 0L3.22 7.28a.75.75 0 011.06-1.06L8 9.94l3.72-3.72a.75.75 0 011.06 0z"></path>
+            </svg>
+        </button>
+        </button>
+        <button class="control control__bottom" onclick="navigate('bottom')">
+            <svg opacity="1" aria-hidden="true" height="48" viewBox="0 0 16 16" version="1.1" width="48" data-view-component="true" class="octicon octicon-chevron-down HeaderMenu-icon ml-1">
+                <path fill-rule="evenodd" d="M12.78 6.22a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06 0L3.22 7.28a.75.75 0 011.06-1.06L8 9.94l3.72-3.72a.75.75 0 011.06 0z"></path>
+            </svg>
+        </button>
+        <button class="control control__right" onclick="navigate('right')">
+            <svg opacity="1" aria-hidden="true" height="48" viewBox="0 0 16 16" version="1.1" width="48" data-view-component="true" class="octicon octicon-chevron-down HeaderMenu-icon ml-1">
+                <path fill-rule="evenodd" d="M12.78 6.22a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06 0L3.22 7.28a.75.75 0 011.06-1.06L8 9.94l3.72-3.72a.75.75 0 011.06 0z"></path>
+            </svg>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', initGame);
+    document.body.addEventListener('keydown', function(){enterKey(event)});
+    const board = [];
+    const boardWidth = 32, boardHeight = 24;
+    var snakeX;
+    var snakeY;
+    var snakeLength;
+    var snakeDirection;
+    var defaultSpeed = 1100;
+    const easyDifficulty = document.getElementById('easy');
+    const normalDifficulty = document.getElementById('normal');
+    const hardDifficulty = document.getElementById('hard');
+    const impossibleDifficulty = document.getElementById('impossible');
+    
+    const navigateTop = document.querySelector('.control__top');
+    const navigateRight = document.querySelector('.control__right');
+    const navigateLeft = document.querySelector('.control__left');
+    const navigateBottom = document.querySelector('.control__bottom');
+    easyDifficulty.addEventListener('click', function(){startGame(); defaultSpeed = 1300;});
+    normalDifficulty.addEventListener('click', function(){startGame(); defaultSpeed = 1100;});
+    hardDifficulty.addEventListener('click', function(){ startGame(); defaultSpeed = 900;});
+    impossibleDifficulty.addEventListener('click', function(){ startGame(); defaultSpeed = 700;});
+
+    function initGame() {
+        const boardElement = document.getElementById('board');
+
+        for (var y = 0; y < boardHeight; ++y) {
+            var row = [];
+            for (var x = 0; x < boardWidth; ++x) {
+                var cell = {};
+                cell.element = document.createElement('div');
+                boardElement.appendChild(cell.element);
+                row.push(cell);
+            }
+    
+            board.push(row);
+        }
+
+        startGame();
+
+        gameLoop();
+    }
+
+    function placeApple() {
+        var appleX = Math.floor(Math.random() * boardWidth);
+        var appleY = Math.floor(Math.random() * boardHeight);
+
+        board[appleY][appleX].apple = 1;
+    }
+        
+    function startGame() {
+        snakeX = Math.floor(boardWidth / 2);
+        snakeY = Math.floor(boardHeight / 2);
+        snakeLength = 5;
+        snakeDirection = 'Up';
+
+        for (var y = 0; y < boardHeight; ++y) {
+            for (var x = 0; x < boardWidth; ++x) {
+                board[y][x].snake = 0;
+                board[y][x].apple = 0;
+            }
+        }
+
+        board[snakeY][snakeX].snake = snakeLength;
+
+        placeApple();
+    }
+
+    function gameLoop() {
+
+        switch (snakeDirection) {
+            case 'Up':    snakeY--; break;
+            case 'Down':  snakeY++; break;
+            case 'Left':  snakeX--; break;
+            case 'Right': snakeX++; break;
+        }
+
+        if (snakeX < 0 || snakeY < 0 || snakeX >= boardWidth || snakeY >= boardHeight || board[snakeY][snakeX].snake > 0) {
+            var deathSound = document.createElement('div');
+            document.head.appendChild(deathSound)
+            deathSound.innerHTML = `
+            <audio src="death-sound-effect-8bit.mp3" style="display: none; width: 0; height: 0; margin: 0; padding: 0;" autoplay></audio>
+            `
+            startGame();
+        }
+
+        if (board[snakeY][snakeX].apple === 1) {
+            var eatSound = document.createElement('div');
+            document.head.appendChild(eatSound)
+            eatSound.innerHTML = `
+            <audio src="eat-sound-effect-8bit.mp3" style="display: none; width: 0; height: 0; margin: 0; padding: 0;" autoplay></audio>
+            `
+            snakeLength++;
+            board[snakeY][snakeX].apple = 0;
+            placeApple();
+        }
+
+        board[snakeY][snakeX].snake = snakeLength;
+
+        for (var y = 0; y < boardHeight; ++y) {
+            for (var x = 0; x < boardWidth; ++x) {
+                var cell = board[y][x];
+
+                if (cell.snake > 0) {
+                    cell.element.className = 'snake';
+                    cell.snake -= 1;
+                }
+                else if (cell.apple === 1) {
+                    cell.element.className = 'apple';
+                }
+                else {
+                    cell.element.className = '';
+                }
+            }
+        }
+        setTimeout(gameLoop, defaultSpeed / (snakeLength / 1.2));
+    }
+
+    function enterKey(event) {
+        switch (event.key) {
+            case 'ArrowUp': snakeDirection = 'Up'; break;
+            case 'ArrowDown': snakeDirection = 'Down'; break;
+            case 'ArrowLeft': snakeDirection = 'Left'; break;
+            case 'ArrowRight': snakeDirection = 'Right'; break;
+            default: break;
+        }
+        event.preventDefault();
+    }
+    function navigate(direction){
+        switch( direction ) {
+            case 'top': snakeDirection = 'Up'; break;
+            case 'bottom': snakeDirection = 'Down'; break;
+            case 'left': snakeDirection = 'Left'; break;
+            case 'right': snakeDirection = 'Right'; break;
+            default: break;
+        }
+    }
+
+    </script>
+</body>
+</html>

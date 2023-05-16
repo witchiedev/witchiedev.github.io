@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="./main.js" defer></script>
+  <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caesars Cipher | Made By Witchie</title>
+</head>
+<body spellcheck="false">
+  <div class="textarea-wrapper">
+    <textarea placeholder="Type your text here..." type="text" id="unshifted" oninput="updateROT(document.getElementById('range').value)">
+    </textarea>
+    <!--ROT-->
+    <textarea placeholder="Result" type="text" id="shifted" readonly></textarea>
+    <!--slider-->
+  </div>
+  <div class="slider-wrapper">
+    <span>Shift: </span>
+    <input type="range" min="1" max="25" value="13" id="range" oninput="rangeValue.innerText = this.value; updateROT(this.value)">
+    <span id="rangeValue">13</span>
+    <button class="copy" onclick="copy(document.getElementById('shifted').value)">Copy</button>
+  </div>
+</body>
+</html>

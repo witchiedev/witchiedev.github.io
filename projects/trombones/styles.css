@@ -1,0 +1,236 @@
+:root{
+  --bg-primary: rgb(250, 250, 250);
+  --bg-secondary: rgb(235, 235, 235);
+  --border-primary: rgb(150, 150, 150);
+  --color-secondary: rgb(25, 25, 25);
+}
+html{
+  font-size: 16px;
+}
+body{
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+}
+button,
+input[type="submit"]{
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+}
+main{
+  display: grid;
+  grid-template-columns: 
+  minmax(2rem, 1fr) 
+  minmax(min-content, 64rem) 
+  minmax(2rem, 1fr);
+  row-gap: 5rem;
+}
+main section,
+main footer,
+main iframe{
+  grid-column: 2 / 3;
+  justify-self: center;
+}
+header{
+  background-color: var(--bg-primary);
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 75px;
+  width: 100%;
+}
+#header-img{
+  width: 350px;
+}
+#nav-bar{
+  padding-right: 25px;
+  display: flex;
+  width: 500px;
+  justify-content: space-around;
+}
+.nav-link{
+  text-decoration: none;
+  color: black;
+}
+h1{
+  margin: 0;
+}
+section#sign-up{
+  padding-top: 5rem;
+}
+#form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#form #email,
+#form #submit{
+  width: 18rem;
+  font-size: 0.9rem;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid var(--border-primary);
+}
+#form #email{
+  margin: 10px;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.05s;
+}
+#form #email:focus{
+  background-color: var(--bg-secondary);
+}
+#form #submit{
+  padding: 5px 10px;
+  background-color: var(--bg-primary);
+  color: var(--color-secondary);
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+}
+#form #submit:hover{
+  background-color: var(--color-secondary);
+  color: var(--bg-primary);
+}
+.features{
+  display: flex;
+  align-items: center;
+}
+.features h1{
+  width: 350px;
+}
+.features p{
+  width: 500px;
+}
+section#pricing{
+  display: flex;
+}
+.product{
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  width: 260px;
+  border-radius: 3px;
+  margin: 15px
+}
+.product-label{
+  background-color: var(--bg-secondary);
+  margin: 0;
+  padding: 1px 0;
+  text-align: center;
+}
+.product-desc{
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-feature{
+  list-style-type: none;
+  margin: 5px;
+}
+.product-features{
+  padding: 0;
+}
+.purchase{
+  border-width: 1px 0 0 0;
+  border-color: rgb(1, 1, 1);
+  width: 100%;
+  padding: 8px;
+}
+@media only screen and (max-width: 930px){
+  main{
+    grid-template-columns: 
+    minmax(2rem, 1fr) 
+    minmax(min-content, 32rem) 
+    minmax(2rem, 1fr);
+  }
+  #header-img{
+    width: 300px;
+  }
+  #nav-bar{
+    padding-right: 25px;
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+  }
+  .features h1{
+    width: 250px;
+  }
+  .features p{
+    width: 350px;
+  }
+  .product{
+    width: 180px;
+    margin: 10px
+  }
+}
+@media only screen and (max-width: 680px){
+  hr{
+    display: none;
+  }
+  .features{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .features h1{
+    text-align: center;
+  }
+  #header{
+    flex-direction: column;
+    height: 100px;
+  }
+  #nav-bar{
+    align-items: center;
+    padding-bottom: 20px;
+    padding-right: 0;
+  }
+  #header-img{
+    margin-top: 10px;
+    margin-left: -25px;
+  }
+  iframe{
+    width: 400px;
+    height: 225px;
+  }
+  section#sign-up{
+    padding-top: 8rem;
+  }
+  .product{
+    width: 250px;
+    margin: 10px
+  }
+  #pricing{
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 476px){
+  iframe{
+    width: 320px;
+    height: 180px;
+  }
+  .features p{
+    width: 300px;
+  }
+}
+@media only screen and (max-width: 400px){
+  iframe{
+    width: 240px;
+    height: 135px;
+  }
+  main{
+    grid-template-columns: 
+    minmax(1rem, 1fr) 
+    minmax(min-content, 32rem) 
+    minmax(1rem, 1fr);
+  }
+  .features p{
+    width: 225px;
+  }
+  #email, #submit{
+    width: 12rem !important;
+  }
+}

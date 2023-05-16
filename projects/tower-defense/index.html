@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" type="text/css">
+  <script src="./main.js" defer></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Witchies TD</title>
+</head>
+<body>
+  <main id="main">
+    <input type="checkbox" class="settings-toggle" />
+    <img src="./settings.png" class="settings-icon" />
+    <section class="settings">
+      <button class="stop">
+        <img src="./pause.png">
+      </button>
+      <button class="change-theme">
+        <img src="./moon.png" alt="moon" class="theme">
+      </button>
+      <p style="color: var(--version-color)">
+        v0.0.1a
+        <br>
+        witchie
+      </p>
+    </section>
+    <section class="game">
+      <div class="blur"></div>
+      <div class="cash"></div>
+      <canvas class="canvas"></canvas>
+    </section>
+    <section class="upgrades">
+      <div class="tabs">
+        <button class="attack tab" onclick="openTab(this)">ATTACK</button>
+        <button class="defense tab" onclick="openTab(this)">DEFENSE</button>
+        <button class="utilities tab" onclick="openTab(this)">UTILITIES</button>
+      </div>
+      <div class="view">
+        <div>
+          <p>Attack Damage</p>
+          <p class="damage upgrade">N/A</p>
+          <button class="damage-btn" onclick="if(!(cash < parseFloat(document.querySelector('.damage-cash').textContent))){upgrades.attack.damage = parseFloat((upgrades.attack.damage + 6).toFixed(2)); upgradeRefresh('damage-cash');cash -= parseFloat(document.querySelector(`.damage-cash`).textContent);}"><img src="./coin.png"><span class="damage-cash">5</span></button>
+        </div>
+        <div>
+          <p>Attack Speed</p>
+          <p class="speed upgrade">N/A</p>
+          <button class="speed-btn" onclick="if(!(cash < parseFloat(document.querySelector('.speed-cash').textContent))){upgrades.attack.speed = parseFloat((upgrades.attack.speed + .05).toFixed(2)); cash -= parseFloat(document.querySelector(`.speed-cash`).textContent); upgradeRefresh('speed-cash'); fpsInterval_shoot = 400 / upgrades.attack.speed;}"><img src="./coin.png"><span class="speed-cash">5</span></button>
+        </div>
+        <div>
+          <p>Critical Chance</p>
+          <p class="critchance upgrade">N/A</p>
+          <button class="critp-btn" onclick="if(!(cash < parseFloat(document.querySelector('.critp-cash').textContent))){upgrades.attack.critChance = parseFloat((upgrades.attack.critChance + 1).toFixed(2));cash -= parseFloat(document.querySelector(`.critp-cash`).textContent); upgradeRefresh('critp-cash')}"><img src="./coin.png"><span class="critp-cash">5</span></button>
+        </div>
+        <div>
+          <p>Critical Factor</p>
+          <p class="critfactor upgrade">N/A</p>
+          <button class="critf-btn" onclick="if(!(cash < parseFloat(document.querySelector('.critf-cash').textContent))){upgrades.attack.critFactor = parseFloat((upgrades.attack.critFactor + .07).toFixed(2));cash -= parseFloat(document.querySelector(`.critf-cash`).textContent); upgradeRefresh('critf-cash')}"><img src="./coin.png"><span class="critf-cash">5</span></button>
+        </div>
+        <div>
+          <p>Tower Range</p> 
+          <p class="range upgrade">N/A</p>
+          <button class="damage-btn" onclick="if(!(cash < parseFloat(document.querySelector('.range-cash').textContent))){upgrades.attack.range = parseFloat((upgrades.attack.range + (0.29)).toFixed(2)); upgradeRefresh('range-cash');cash -= parseFloat(document.querySelector(`.range-cash`).textContent);}"><img src="./coin.png"><span class="range-cash">5</span></button>
+        </div>
+        <div>
+          <p>Multishot Chance</p>
+          <p class="multi upgrade">N/A</p>
+          <button class="damage-btn" onclick="if(!(cash < parseFloat(document.querySelector('.multi-cash').textContent))){upgrades.attack.multiChance = parseFloat((upgrades.attack.multiChance * 1.1).toFixed(2)); cash -= parseFloat(document.querySelector(`.multi-cash`).textContent); upgradeRefresh('multi-cash')}"><img src="./coin.png"><span class="multi-cash">5</span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

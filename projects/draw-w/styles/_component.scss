@@ -1,0 +1,45 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  background: whitesmoke;
+  font-family: 'Ubuntu Mono', monospace, sans-serif;
+}
+canvas {
+  background: white;
+}
+
+#paint-app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div{
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      form {
+        display: none;
+      }
+      span:nth-of-type(2) {
+        input {
+          height: 22px;
+        }
+      }
+    }
+  }
+}
+
+.placeholder {
+  position: absolute;
+  z-index: 999;
+}
+@media only screen and (max-width: 720px) {
+  #paint-app div .toolbar div {
+    input {
+      font-size: 0.3rem;
+    }
+  }
+}
